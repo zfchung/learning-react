@@ -30,8 +30,28 @@ export const Characters: FC = () => {
     <>
       <h1>Characters Page</h1>
       {
-        characterList.map(character => {
-          return <p>{character.name}</p>;
+        characterList.map((character, index) => {
+          if (!nameParam) {
+            return (
+              <p>
+                <a href={`/characters/${index + 1}`}>{character.name}</a>
+              </p>
+            );
+          }
+
+          return (
+            <>
+              <h2>{character.name}</h2>
+              <p>
+                Birth Year: {character.birth_year} <br/>
+                Gender: {character.gender} <br/>
+                Hair Color: {character.hair_color} <br/>
+                Height: {character.height} <br/>
+                Home World: {character.homeworld} <br/>
+                Mass: {character.mass} <br/>
+              </p>
+            </>
+          )
         })
       }
     </>
