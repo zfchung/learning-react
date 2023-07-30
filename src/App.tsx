@@ -15,6 +15,15 @@ export const App: FC = () => {
           const { Characters } = await import("./pages/characters");
           return { Component: Characters };
         },
+        children: [
+          {
+            path: "/characters/:nameParam",
+            async lazy() {
+              const { Characters } = await import("./pages/characters");
+              return { Component: Characters };
+            },
+          }
+        ]
       }
     ]);
   }, [])
